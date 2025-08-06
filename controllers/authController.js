@@ -5,8 +5,11 @@ require('dotenv').config();
 
 const login = async (req, res) => {
   const { username, password } = req.body;
+  console.log('body:', username)
+  console.log('Body recibido:', req.body)
 
   try {
+    
     const user = await findUserByUsername(username);
     if (!user) {
       return res.status(401).json({ mensaje: 'Usuario no encontrado' });
